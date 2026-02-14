@@ -24,6 +24,11 @@
   </head>
 
   <body>
+    <!-- Scroll progress bar (animated via JS) -->
+    <div class="scroll-progress" aria-hidden="true">
+        <div class="scroll-progress__bar" id="scrollProgressBar"></div>
+    </div>
+
     <!-- Accessibility feature: allows keyboard users to skip navigation -->
     <a class="skip-link" href="#main">Skip to content</a>
 
@@ -77,7 +82,7 @@
     <main id="main">
       <!-- ========== HERO SECTION ========== -->
       <!-- Introductory section shown at the top -->
-      <section class="hero">
+      <section class="hero" data-reveal>
         <div class="container hero-inner">
           <!-- Text introduction -->
           <div class="hero-text">
@@ -88,7 +93,7 @@
             <h2 class="hero-title">Hi, I’m Ola 👋</h2>
 
             <p class="hero-desc">
-              I’m a software engineering student interested in AI and web development.
+              I’m a software engineering student interested in AI, clouding, and web development.
               I enjoy turning ideas into simple, usable websites.
             </p>
 
@@ -113,7 +118,7 @@
 
       <!-- ========== ABOUT SECTION ========== -->
       <!-- Brief description about the student -->
-      <section class="section" id="about">
+      <section class="section" id="about" data-reveal>
         <div class="container">
           <h3 class="section-title">About Me</h3>
 
@@ -121,9 +126,11 @@
             <!-- Main about text -->
             <div class="card">
               <p>
-                I’m a software engineering student who enjoys building responsive web
-                interfaces. I’m currently improving my fundamentals and learning how
-                to use AI tools to work more efficiently.
+                I’m a Software Engineering student at King Fahd University of Petroleum and Minerals,
+                 focusing on cloud and web development. I love building thoughtful, impactful solutions
+                  — the kind that quietly become essential in people’s everyday lives. I’m driven
+                   by the idea that technology, when built with intention, can help create a better and more 
+                   meaningful future.
               </p>
               <p class="muted">
                 Tagline: <strong>“Simple design, strong basics.”</strong>
@@ -147,27 +154,43 @@
 
       <!-- ========== PROJECTS SECTION ========== -->
       <!-- Displays sample projects -->
-      <section class="section" id="projects">
+      <section class="section" id="projects" data-reveal>
         <div class="container">
           <h3 class="section-title">Projects</h3>
 
           <div class="projects-grid">
             <!-- Project card 1 -->
             <article class="project card">
-              <div class="project-img" aria-hidden="true">🧩</div>
-              <h4 class="card-title">Project 1: Personal Portfolio</h4>
+              <div class="project-img">
+                <img
+                    src="assets/ai-assistant.png"
+                    alt="AI-powered study assistant web application interface"
+                    loading="lazy"
+                />
+                </div>
+              <h4 class="card-title">Project 1: AI-Powered Study Assistant</h4>
               <p class="muted">
-                A responsive portfolio website using HTML, CSS, and JavaScript.
-                Includes interactive features and clean layout.
+                An AI-driven web application that converts uploaded study materials
+                into summaries, flashcards, and quizzes to support smarter, more efficient
+                learning.
               </p>
             </article>
 
             <!-- Project card 2 -->
             <article class="project card">
-              <div class="project-img" aria-hidden="true">📝</div>
-              <h4 class="card-title">Project 2: Form Interaction Demo</h4>
+                  <div class="project-img">
+                <img
+                    src="assets/my-library.png"
+                    alt="Personal digital library for tracking books and notes"
+                    loading="lazy"
+                />
+                </div>
+              <h4 class="card-title">Project 2: Personal Book Library</h4>
               <p class="muted">
-                A simple contact form with JavaScript validation and user feedback.
+                A personal web application to create your own digital library, 
+                where you can log books, add ratings, record reflections, and 
+                highlight ideas. Designed to organize your reading experience 
+                and keep your insights in one place.
               </p>
             </article>
           </div>
@@ -176,7 +199,7 @@
 
       <!-- ========== CONTACT SECTION ========== -->
       <!-- Contact form (no backend required) -->
-      <section class="section" id="contact">
+      <section class="section" id="contact" data-reveal>
         <div class="container">
           <h3 class="section-title">Contact</h3>
 

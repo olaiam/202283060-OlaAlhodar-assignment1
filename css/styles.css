@@ -346,21 +346,43 @@ body {
   gap: 14px;
 }
 
-.project-img {
-  height: 140px;
-  border-radius: 18px;
-  border: 1px solid var(--border);
-  background:
-    radial-gradient(300px 180px at 20% 20%, rgba(124,58,237,0.25), transparent 60%),
-    radial-gradient(300px 180px at 80% 30%, rgba(6,182,212,0.18), transparent 60%),
-    rgba(255,255,255,0.03);
-  display: grid;
-  place-items: center;
-  font-size: 2.2rem;
-  margin-bottom: 12px;
-  transition: transform 220ms var(--ease);
+/* Project card layout */
+.project {
+  display: flex;
+  flex-direction: column; /* image on top, text below */
 }
-.project:hover .project-img { transform: scale(1.02); }
+
+/* Image container (the rounded box) */
+.project-img {
+  height: 180px;                 /* controls image height */
+  border-radius: 18px;
+  overflow: hidden;              /* IMPORTANT: clips image to rounded corners */
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.04);
+  margin-bottom: 14px;           /* space between image and text */
+}
+
+/* Image itself */
+.project-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;             /* fills box without stretching */
+  display: block;
+  transition: transform 300ms var(--ease);
+}
+
+/* Subtle hover zoom (professional touch) */
+.project:hover .project-img img {
+  transform: scale(1.05);
+}
+
+/* Text content */
+.project-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 
 /* ========== CONTACT ========== */
 .contact-grid {
