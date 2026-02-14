@@ -71,16 +71,13 @@ Each file and folder follows a clear separation of concerns, making the project 
 
 No additional installation steps, build tools, or external dependencies are required.
 
----
+## 🌐 Live Demo
 
-## 📄 Technical Documentation
+The live version of this project is available at:
 
-Detailed technical explanations are provided in the `docs` folder:
+👉 https://olaiam.github.io/202283060-OlaAlhodar-assignment1/
 
-- **technical-documentation.md** – explains file roles, layout decisions, responsive design strategy, and JavaScript functionality  
-- **ai-usage-report.md** – documents how AI tools were used during development and how the output was reviewed and adapted  
-
-These documents ensure transparency and clarity regarding the technical implementation of the project.
+The website can be opened and tested on any modern browser and device without additional setup.
 
 ---
 
