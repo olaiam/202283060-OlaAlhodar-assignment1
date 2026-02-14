@@ -487,12 +487,20 @@ input:focus, textarea:focus {
 }
 
 /* ========== REVEAL ANIMATION (paired with JS) ========== */
+/* Default: content visible (no JS = still works) */
 [data-reveal] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Only animate when JS is available */
+.js [data-reveal] {
   opacity: 0;
   transform: translateY(14px);
-  transition: opacity 650ms var(--ease), transform 650ms var(--ease);
+  transition: opacity 600ms ease, transform 600ms ease;
 }
-.revealed {
+
+.js .revealed {
   opacity: 1;
   transform: translateY(0);
 }
