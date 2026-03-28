@@ -17,9 +17,9 @@
   --text: #e7edf7;
   --muted: rgba(231, 237, 247, 0.72);
 
-  --accent: #7c3aed;      /* purple */
-  --accent2: #22c55e;     /* green */
-  --accent3: #06b6d4;     /* cyan */
+  --accent: #7c3aed;
+  --accent2: #22c55e;
+  --accent3: #06b6d4;
 
   --shadow: 0 16px 50px rgba(0, 0, 0, 0.45);
   --shadow-soft: 0 12px 30px rgba(0, 0, 0, 0.25);
@@ -270,8 +270,9 @@ body {
   content: "";
   position: absolute;
   inset: -2px;
-  background: radial-gradient(500px 200px at 20% 0%, rgba(124,58,237,0.20), transparent 60%),
-              radial-gradient(450px 250px at 80% 20%, rgba(6,182,212,0.16), transparent 60%);
+  background:
+    radial-gradient(500px 200px at 20% 0%, rgba(124,58,237,0.20), transparent 60%),
+    radial-gradient(450px 250px at 80% 20%, rgba(6,182,212,0.16), transparent 60%);
   opacity: 0.7;
   pointer-events: none;
 }
@@ -346,43 +347,37 @@ body {
   gap: 14px;
 }
 
-/* Project card layout */
 .project {
   display: flex;
-  flex-direction: column; /* image on top, text below */
+  flex-direction: column;
 }
 
-/* Image container (the rounded box) */
 .project-img {
-  height: 180px;                 /* controls image height */
+  height: 180px;
   border-radius: 18px;
-  overflow: hidden;              /* IMPORTANT: clips image to rounded corners */
+  overflow: hidden;
   border: 1px solid var(--border);
   background: rgba(255, 255, 255, 0.04);
-  margin-bottom: 14px;           /* space between image and text */
+  margin-bottom: 14px;
 }
 
-/* Image itself */
 .project-img img {
   width: 100%;
   height: 100%;
-  object-fit: cover;             /* fills box without stretching */
+  object-fit: cover;
   display: block;
   transition: transform 300ms var(--ease);
 }
 
-/* Subtle hover zoom (professional touch) */
 .project:hover .project-img img {
   transform: scale(1.05);
 }
 
-/* Text content */
 .project-content {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
-
 
 /* ========== CONTACT ========== */
 .contact-grid {
@@ -414,11 +409,6 @@ input, textarea {
 input:focus, textarea:focus {
   border-color: rgba(124,58,237,0.45);
   background: rgba(255,255,255,0.05);
-}
-
-.form-status {
-  margin: 6px 0 0;
-  color: var(--muted);
 }
 
 /* ========== BUTTONS ========== */
@@ -479,8 +469,10 @@ input:focus, textarea:focus {
 /* Screen reader helper */
 .sr-only {
   position: absolute;
-  width: 1px; height: 1px;
-  margin: -1px; padding: 0;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
   overflow: hidden;
   clip: rect(0,0,0,0);
   border: 0;
@@ -503,6 +495,73 @@ input:focus, textarea:focus {
 .js .revealed {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ========== PROJECT FILTERS ========== */
+.project-filters {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.filter-btn.active {
+  background: linear-gradient(135deg, rgba(124,58,237,0.95), rgba(6,182,212,0.85));
+  color: #fff;
+  border-color: transparent;
+}
+
+.projects-status {
+  min-height: 24px;
+  margin: 0 0 14px;
+}
+
+.project.hidden {
+  display: none;
+}
+
+/* ========== FORM FEEDBACK STATES ========== */
+.form-status {
+  margin: 6px 0 0;
+  color: var(--muted);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 250ms ease, transform 250ms ease;
+}
+
+.form-status.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.form-status.success {
+  color: #86efac;
+}
+
+.form-status.error {
+  color: #fca5a5;
+}
+
+/* Field-specific validation messages */
+.field-error {
+  margin: -4px 0 2px;
+  min-height: 20px;
+  font-size: 0.95rem;
+  color: #fca5a5;
+  opacity: 0;
+  transform: translateY(-2px);
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+.field-error.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Optional: input error style */
+.input-error {
+  border-color: rgba(252, 165, 165, 0.9);
+  box-shadow: 0 0 0 4px rgba(252, 165, 165, 0.12);
 }
 
 /* ========== RESPONSIVE ========== */
@@ -528,6 +587,7 @@ input:focus, textarea:focus {
     width: min(260px, 92vw);
     box-shadow: var(--shadow);
   }
+
   [data-theme="light"] .nav-links {
     background: rgba(255,255,255,0.78);
   }

@@ -20,27 +20,23 @@
     <link rel="stylesheet" href="css/styles.css" />
 
     <!-- Link to JavaScript file (defer ensures it runs after HTML loads) -->
-
-
     <script src="js/script.js" defer></script>
 
     <script>
-        document.documentElement.classList.add("js");
+      document.documentElement.classList.add("js");
     </script>
-
   </head>
 
   <body>
     <!-- Scroll progress bar (animated via JS) -->
     <div class="scroll-progress" aria-hidden="true">
-        <div class="scroll-progress__bar" id="scrollProgressBar"></div>
+      <div class="scroll-progress__bar" id="scrollProgressBar"></div>
     </div>
 
     <!-- Accessibility feature: allows keyboard users to skip navigation -->
     <a class="skip-link" href="#main">Skip to content</a>
 
     <!-- ================= HEADER ================= -->
-    <!-- Contains site branding and navigation -->
     <header class="site-header">
       <div class="container header-inner">
         <!-- Branding / site identity -->
@@ -88,7 +84,6 @@
     <!-- ================= MAIN CONTENT ================= -->
     <main id="main">
       <!-- ========== HERO SECTION ========== -->
-      <!-- Introductory section shown at the top -->
       <section class="hero" data-reveal>
         <div class="container hero-inner">
           <!-- Text introduction -->
@@ -112,7 +107,7 @@
           </div>
 
           <!-- Visual card with short personal info -->
-          <div class="hero-card" role="img" aria-label="Profile information card">
+          <div class="hero-card card" role="img" aria-label="Profile information card">
             <div class="avatar" aria-hidden="true">OA</div>
             <div class="hero-card-text">
               <p><strong>Focus:</strong> HTML, CSS, JavaScript</p>
@@ -124,7 +119,6 @@
       </section>
 
       <!-- ========== ABOUT SECTION ========== -->
-      <!-- Brief description about the student -->
       <section class="section" id="about" data-reveal>
         <div class="container">
           <h3 class="section-title">About Me</h3>
@@ -134,10 +128,10 @@
             <div class="card">
               <p>
                 I’m a Software Engineering student at King Fahd University of Petroleum and Minerals,
-                 focusing on cloud and web development. I love building thoughtful, impactful solutions
-                  — the kind that quietly become essential in people’s everyday lives. I’m driven
-                   by the idea that technology, when built with intention, can help create a better and more 
-                   meaningful future.
+                focusing on cloud and web development. I love building thoughtful, impactful solutions
+                — the kind that quietly become essential in people’s everyday lives. I’m driven
+                by the idea that technology, when built with intention, can help create a better and more
+                meaningful future.
               </p>
               <p class="muted">
                 Tagline: <strong>“Simple design, strong basics.”</strong>
@@ -160,21 +154,29 @@
       </section>
 
       <!-- ========== PROJECTS SECTION ========== -->
-      <!-- Displays sample projects -->
       <section class="section" id="projects" data-reveal>
         <div class="container">
           <h3 class="section-title">Projects</h3>
 
-          <div class="projects-grid">
+          <div class="project-filters" aria-label="Project filters">
+            <button class="btn filter-btn active" type="button" data-filter="all">All</button>
+            <button class="btn filter-btn" type="button" data-filter="ai">AI</button>
+            <button class="btn filter-btn" type="button" data-filter="web">Web</button>
+            <button class="btn filter-btn" type="button" data-filter="mobile">Mobile</button>
+          </div>
+
+          <p class="projects-status muted" id="projectsStatus" role="status"></p>
+
+          <div class="projects-grid" id="projectsGrid">
             <!-- Project card 1 -->
-            <article class="project card">
+            <article class="project card" data-category="ai">
               <div class="project-img">
                 <img
-                    src="assets/ai-assistant.png"
-                    alt="AI-powered study assistant web application interface"
-                    loading="lazy"
+                  src="assets/ai-assistant.png"
+                  alt="AI-powered study assistant web application interface"
+                  loading="lazy"
                 />
-                </div>
+              </div>
               <h4 class="card-title">Project 1: AI-Powered Study Assistant</h4>
               <p class="muted">
                 An AI-driven web application that converts uploaded study materials
@@ -184,19 +186,19 @@
             </article>
 
             <!-- Project card 2 -->
-            <article class="project card">
-                  <div class="project-img">
+            <article class="project card" data-category="web">
+              <div class="project-img">
                 <img
-                    src="assets/my-library.png"
-                    alt="Personal digital library for tracking books and notes"
-                    loading="lazy"
+                  src="assets/my-library.png"
+                  alt="Personal digital library for tracking books and notes"
+                  loading="lazy"
                 />
-                </div>
+              </div>
               <h4 class="card-title">Project 2: Personal Book Library</h4>
               <p class="muted">
-                A personal web application to create your own digital library, 
-                where you can log books, add ratings, record reflections, and 
-                highlight ideas. Designed to organize your reading experience 
+                A personal web application to create your own digital library,
+                where you can log books, add ratings, record reflections, and
+                highlight ideas. Designed to organize your reading experience
                 and keep your insights in one place.
               </p>
             </article>
@@ -205,7 +207,6 @@
       </section>
 
       <!-- ========== CONTACT SECTION ========== -->
-      <!-- Contact form (no backend required) -->
       <section class="section" id="contact" data-reveal>
         <div class="container">
           <h3 class="section-title">Contact</h3>
@@ -217,32 +218,42 @@
 
               <form id="contactForm" class="form" novalidate>
                 <!-- Name input -->
-                <label>
-                  Name
-                  <input type="text" id="name" placeholder="Your name" required />
-                </label>
+                <label for="name">Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Your name"
+                  required
+                />
+                <p class="field-error" id="nameError"></p>
 
                 <!-- Email input -->
-                <label>
-                  Email
-                  <input type="email" id="email" placeholder="you@example.com" required />
-                </label>
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="you@example.com"
+                  required
+                />
+                <p class="field-error" id="emailError"></p>
 
                 <!-- Message textarea -->
-                <label>
-                  Message
-                  <textarea
-                    id="message"
-                    rows="5"
-                    placeholder="Write your message..."
-                    required
-                  ></textarea>
-                </label>
+                <label for="message">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  placeholder="Write your message..."
+                  required
+                ></textarea>
+                <p class="field-error" id="messageError"></p>
 
                 <!-- Submit button -->
                 <button class="btn primary" type="submit">Send</button>
 
-                <!-- Status message updated via JavaScript -->
+                <!-- General success message -->
                 <p class="form-status" id="formStatus" role="status"></p>
               </form>
             </div>
@@ -250,8 +261,8 @@
             <!-- Extra info and greeting -->
             <div class="card">
               <h4 class="card-title">Info</h4>
-                <p class="muted">Email: Ola.alhodar@gmail.com</p>
-                <p class="muted">GitHub: ola-swe</p>
+              <p class="muted">Email: Ola.alhodar@gmail.com</p>
+              <p class="muted">GitHub: ola-swe</p>
               <!-- Greeting text injected by JavaScript -->
               <p class="muted" id="greetingText"></p>
             </div>
@@ -264,7 +275,7 @@
     <footer class="footer">
       <div class="container footer-inner">
         <!-- Year is dynamically inserted using JavaScript -->
-        <p>© <span id="year"></span> Ola — Assignment 1</p>
+        <p>© <span id="year"></span> Ola — Portfolio</p>
         <a class="link" href="#main">Back to top</a>
       </div>
     </footer>

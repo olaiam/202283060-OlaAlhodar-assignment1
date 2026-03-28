@@ -3,7 +3,7 @@
 This repository contains a responsive personal portfolio website developed for Assignment 1.  
 The project demonstrates a structured, professional approach to front-end web development using HTML, CSS, JavaScript, and AI-assisted tools.
 
-The website is designed to be **clear, intuitive, and easy to navigate**, allowing users to understand the content and interact with the interface without any technical background.
+The website is designed to be **clear, intuitive, and interactive**, allowing users to explore content and interact with features without any technical background.
 
 ---
 
@@ -12,10 +12,10 @@ The website is designed to be **clear, intuitive, and easy to navigate**, allowi
 The portfolio website consists of three main sections:
 
 - **About Me** – a brief introduction and overview of skills  
-- **Projects** – sample projects presented in a consistent, card-based layout with images  
-- **Contact** – a simple contact form with front-end validation and user feedback  
+- **Projects** – sample projects presented in a card-based layout with filtering functionality  
+- **Contact** – a contact form with detailed validation and user feedback  
 
-The layout emphasizes readability, visual balance, and smooth interaction, while maintaining a clean and professional appearance.
+The design focuses on readability, smooth interaction, and meaningful user feedback, while maintaining a clean and modern appearance.
 
 ---
 
@@ -23,7 +23,7 @@ The layout emphasizes readability, visual balance, and smooth interaction, while
 
 - **HTML5** – semantic structure and content organization  
 - **CSS3** – modern styling, transitions, animations, and responsive layout using Flexbox and Grid  
-- **JavaScript (Vanilla)** – user interaction, UI behavior, and form validation  
+- **JavaScript (Vanilla)** – dynamic content, filtering, validation, and UI behavior  
 - **Git & GitHub** – version control and repository management  
 
 ---
@@ -31,11 +31,16 @@ The layout emphasizes readability, visual balance, and smooth interaction, while
 ## ✨ Features
 
 - Fully responsive design for desktop, tablet, and mobile screens  
-- Dark and light theme toggle for improved user experience  
+- Dark and light theme toggle with saved user preference  
 - Smooth hover effects and transitions  
 - Section reveal animations on scroll  
 - Scroll progress indicator  
-- Contact form with input validation and feedback messages (no backend)  
+- **Project filtering system (dynamic content)**  
+- **Empty state feedback (“No projects found”)**  
+- Contact form with:
+  - Field-specific validation messages  
+  - Email validation (`@` and `.com` checks)  
+  - Animated success and error feedback  
 - Optimized image loading using lazy loading  
 
 ---
@@ -43,53 +48,53 @@ The layout emphasizes readability, visual balance, and smooth interaction, while
 ## 📁 Project Structure
 
 assignment-1/
-├── index.html                     # Main HTML file (page structure and content)
-├── README.md                      # Project overview and usage guide
-├── css/
-│   └── styles.css                 # Styling, layout, transitions, and responsiveness
-├── js/
-│   └── script.js                  # JavaScript interactivity and UI behavior
-├── assets/
-│   └── images/
-│       ├── ai-assistant.png       # Image for AI-Powered Study Assistant project
-│       └── my-library.png         # Image for My Library project
-├── docs/
-│   ├── ai-usage-report.md         # Description of AI tools used during development
-│   └── technical-documentation.md # Detailed technical explanations
-└── .gitignore                     # Git ignore rules
-
-
-Each file and folder follows a clear separation of concerns, making the project easy to understand, maintain, and extend.
+├── index.html  
+├── README.md  
+├── css/  
+│   └── styles.css  
+├── js/  
+│   └── script.js  
+├── assets/  
+│   └── images/  
+│       ├── ai-assistant.png  
+│       └── my-library.png  
+├── docs/  
+│   ├── ai-usage-report.md  
+│   └── technical-documentation.md  
+└── .gitignore  
 
 ---
 
-## ▶️ Installation and Usage Guide
+## ▶️ Setup Instructions (Run Locally)
 
-1. Clone or download the repository from GitHub.
-2. Open the `assignment-1` folder.
-3. Open the `index.html` file in any modern web browser (e.g., Chrome, Firefox, Edge).
+1. Clone or download the repository from GitHub  
+2. Open the `assignment-1` folder  
+3. Open `index.html` in any modern web browser  
 
-No additional installation steps, build tools, or external dependencies are required.
+No additional installation, build tools, or dependencies are required.
+
+---
 
 ## 🌐 Live Demo
 
-The live version of this project is available at:
-
 👉 https://olaiam.github.io/202283060-OlaAlhodar-assignment1/
 
-The website can be opened and tested on any modern browser and device without additional setup.
+The website works on all modern browsers and devices.
 
 ---
 
-## 🤖 AI-Assisted Development
+## 🤖 AI Usage Summary
 
-AI tools were used to support development by:
-- Assisting with layout and styling ideas
-- Helping implement interactive JavaScript features
-- Improving code readability and structure
-- Supporting documentation writing
+AI tools were used to support:
 
-All AI-generated suggestions were reviewed, understood, and manually refined before final integration.
+- Improving visual design and layout decisions  
+- Suggesting user interface enhancements  
+- Assisting with interaction ideas such as filtering and feedback behavior  
+- Refining wording and documentation clarity  
+
+A detailed explanation is provided in:
+
+👉 `docs/ai-usage-report.md`
 
 ---
 
@@ -100,5 +105,4 @@ The contact form demonstrates client-side validation and user feedback without s
 
 ---
 
-© Assignment 1 – Personal Portfolio
-.
+© Assignment 2 – Personal Portfolio
