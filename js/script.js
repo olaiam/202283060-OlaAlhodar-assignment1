@@ -307,9 +307,14 @@ async function fetchGitHubRepos() {
     renderGitHubRepos();
     githubStatusEl.textContent = "GitHub projects loaded successfully.";
   } catch (error) {
-    githubProjectsEl.innerHTML = "";
-    githubStatusEl.textContent =
-      "Sorry, GitHub projects could not be loaded right now. Please try again later.";
+  githubProjectsEl.innerHTML = "";
+  githubStatusEl.innerHTML = `
+    GitHub projects are temporarily unavailable.
+    <a href="https://github.com/ola-swe" target="_blank" class="link">
+      View my GitHub profile
+    </a>
+  `;
+
   }
 }
 
