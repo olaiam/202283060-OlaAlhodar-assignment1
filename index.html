@@ -7,19 +7,11 @@
 
 <html lang="en">
   <head>
-    <!-- Character encoding -->
     <meta charset="UTF-8" />
-
-    <!-- Makes the website responsive on mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Page title shown in browser tab -->
     <title>Ola | Portfolio</title>
 
-    <!-- Link to external CSS file for styling -->
     <link rel="stylesheet" href="css/styles.css" />
-
-    <!-- Link to JavaScript file (defer ensures it runs after HTML loads) -->
     <script src="js/script.js" defer></script>
 
     <script>
@@ -28,18 +20,15 @@
   </head>
 
   <body>
-    <!-- Scroll progress bar (animated via JS) -->
     <div class="scroll-progress" aria-hidden="true">
       <div class="scroll-progress__bar" id="scrollProgressBar"></div>
     </div>
 
-    <!-- Accessibility feature: allows keyboard users to skip navigation -->
     <a class="skip-link" href="#main">Skip to content</a>
 
     <!-- ================= HEADER ================= -->
     <header class="site-header">
       <div class="container header-inner">
-        <!-- Branding / site identity -->
         <div class="brand">
           <span class="logo" aria-hidden="true">◎</span>
           <div>
@@ -48,35 +37,33 @@
           </div>
         </div>
 
-        <!-- Navigation menu -->
         <nav class="nav" aria-label="Primary navigation">
-          <!-- Button used for mobile navigation toggle -->
           <button
             class="nav-toggle"
             id="navToggle"
             aria-expanded="false"
             aria-controls="navLinks"
+            type="button"
           >
             ☰
             <span class="sr-only">Toggle navigation</span>
           </button>
 
-          <!-- Navigation links -->
           <ul class="nav-links" id="navLinks">
             <li><a href="#about">About</a></li>
             <li><a href="#projects">Projects</a></li>
+            <li><a href="#github">GitHub</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
         </nav>
 
-        <!-- Button to toggle dark/light mode using JavaScript -->
         <button
           class="theme-btn"
           id="themeToggle"
           type="button"
           aria-label="Toggle dark mode"
         >
-          🌙
+          ☀️
         </button>
       </div>
     </header>
@@ -86,7 +73,6 @@
       <!-- ========== HERO SECTION ========== -->
       <section class="hero" data-reveal>
         <div class="container hero-inner">
-          <!-- Text introduction -->
           <div class="hero-text">
             <p class="tagline">
               Building clean, responsive web pages — and learning AI tools along the way.
@@ -95,18 +81,16 @@
             <h2 class="hero-title">Hi, I’m Ola 👋</h2>
 
             <p class="hero-desc">
-              I’m a software engineering student interested in AI, clouding, and web development.
-              I enjoy turning ideas into simple, usable websites.
+              I’m a software engineering student interested in AI, cloud computing,
+              and web development. I enjoy turning ideas into simple, usable websites.
             </p>
 
-            <!-- Call-to-action buttons -->
             <div class="hero-actions">
               <a class="btn primary" href="#projects">See projects</a>
               <a class="btn" href="#contact">Contact me</a>
             </div>
           </div>
 
-          <!-- Visual card with short personal info -->
           <div class="hero-card card" role="img" aria-label="Profile information card">
             <div class="avatar" aria-hidden="true">OA</div>
             <div class="hero-card-text">
@@ -124,21 +108,18 @@
           <h3 class="section-title">About Me</h3>
 
           <div class="about-grid">
-            <!-- Main about text -->
             <div class="card">
               <p>
-                I’m a Software Engineering student at King Fahd University of Petroleum and Minerals,
-                focusing on cloud and web development. I love building thoughtful, impactful solutions
-                — the kind that quietly become essential in people’s everyday lives. I’m driven
-                by the idea that technology, when built with intention, can help create a better and more
-                meaningful future.
+                I’m a Software Engineering student at King Fahd University of Petroleum
+                and Minerals, with growing interest in AI, cloud computing, and web
+                development. I enjoy building thoughtful and useful digital experiences
+                that solve real problems in a simple way.
               </p>
               <p class="muted">
                 Tagline: <strong>“Simple design, strong basics.”</strong>
               </p>
             </div>
 
-            <!-- Skills list -->
             <div class="card">
               <h4 class="card-title">Skills</h4>
               <ul class="chips">
@@ -147,6 +128,7 @@
                 <li>JavaScript</li>
                 <li>Git & GitHub</li>
                 <li>Responsive Design</li>
+                <li>Problem Solving</li>
               </ul>
             </div>
           </div>
@@ -158,50 +140,105 @@
         <div class="container">
           <h3 class="section-title">Projects</h3>
 
-          <div class="project-filters" aria-label="Project filters">
-            <button class="btn filter-btn active" type="button" data-filter="all">All</button>
-            <button class="btn filter-btn" type="button" data-filter="ai">AI</button>
-            <button class="btn filter-btn" type="button" data-filter="web">Web</button>
-            <button class="btn filter-btn" type="button" data-filter="mobile">Mobile</button>
+          <div class="project-toolbar">
+            <div class="project-filters" aria-label="Project filters">
+              <button class="btn filter-btn active" type="button" data-filter="all">All</button>
+              <button class="btn filter-btn" type="button" data-filter="ai">AI</button>
+              <button class="btn filter-btn" type="button" data-filter="web">Web</button>
+              <button class="btn filter-btn" type="button" data-filter="mobile">Mobile</button>
+            </div>
+
+            <div class="sort-box">
+              <label for="localSortProjects">Sort by</label>
+              <select id="localSortProjects">
+                <option value="default">Default</option>
+                <option value="name">Name</option>
+                <option value="category">Category</option>
+              </select>
+            </div>
           </div>
 
           <p class="projects-status muted" id="projectsStatus" role="status"></p>
 
           <div class="projects-grid" id="projectsGrid">
-            <!-- Project card 1 -->
-            <article class="project card" data-category="ai">
+            <article
+              class="project card"
+              data-category="ai"
+              data-title="AI-Powered Study Assistant"
+            >
               <div class="project-img">
                 <img
-                  src="assets/ai-assistant.png"
+                  src="assets/images/ai-assistant.png"
                   alt="AI-powered study assistant web application interface"
                   loading="lazy"
+                  width="800"
+                  height="500"
                 />
               </div>
-              <h4 class="card-title">Project 1: AI-Powered Study Assistant</h4>
-              <p class="muted">
-                An AI-driven web application that converts uploaded study materials
-                into summaries, flashcards, and quizzes to support smarter, more efficient
-                learning.
-              </p>
+
+              <div class="project-content">
+                <h4 class="card-title">AI-Powered Study Assistant</h4>
+                <p class="muted">
+                  An AI-driven web application that converts uploaded study materials
+                  into summaries, flashcards, and quizzes to support smarter and more
+                  efficient learning.
+                </p>
+                <span class="project-tag">AI</span>
+              </div>
             </article>
 
-            <!-- Project card 2 -->
-            <article class="project card" data-category="web">
+            <article
+              class="project card"
+              data-category="web"
+              data-title="Personal Book Library"
+            >
               <div class="project-img">
                 <img
-                  src="assets/my-library.png"
+                  src="assets/images/my-library.png"
                   alt="Personal digital library for tracking books and notes"
                   loading="lazy"
+                  width="800"
+                  height="500"
                 />
               </div>
-              <h4 class="card-title">Project 2: Personal Book Library</h4>
-              <p class="muted">
-                A personal web application to create your own digital library,
-                where you can log books, add ratings, record reflections, and
-                highlight ideas. Designed to organize your reading experience
-                and keep your insights in one place.
-              </p>
+
+              <div class="project-content">
+                <h4 class="card-title">Personal Book Library</h4>
+                <p class="muted">
+                  A personal web application for creating a digital library where users
+                  can log books, add ratings, record reflections, and organize reading
+                  notes in one place.
+                </p>
+                <span class="project-tag">Web</span>
+              </div>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== GITHUB API SECTION ========== -->
+      <section class="section" id="github" data-reveal>
+        <div class="container">
+          <h3 class="section-title">Live GitHub Projects</h3>
+
+          <div class="card github-section">
+            <p class="muted">
+              These repositories are fetched dynamically from GitHub using the GitHub API.
+            </p>
+
+            <div class="project-toolbar">
+              <div class="sort-box">
+                <label for="sortProjects">Sort repositories</label>
+                <select id="sortProjects">
+                  <option value="default">Default</option>
+                  <option value="name">Name</option>
+                  <option value="stars">Stars</option>
+                </select>
+              </div>
+            </div>
+
+            <p class="projects-status muted" id="githubStatus" role="status"></p>
+            <div class="projects-grid" id="githubProjects"></div>
           </div>
         </div>
       </section>
@@ -212,59 +249,90 @@
           <h3 class="section-title">Contact</h3>
 
           <div class="contact-grid">
-            <!-- Contact form -->
             <div class="card">
               <h4 class="card-title">Send a message</h4>
 
               <form id="contactForm" class="form" novalidate>
-                <!-- Name input -->
-                <label for="name">Name</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  placeholder="Your name"
-                  required
-                />
-                <p class="field-error" id="nameError"></p>
+                <div>
+                  <label for="name">Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Your name"
+                    required
+                  />
+                  <p class="field-error" id="nameError"></p>
+                </div>
 
-                <!-- Email input -->
-                <label for="email">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="you@example.com"
-                  required
-                />
-                <p class="field-error" id="emailError"></p>
+                <div>
+                  <label for="email">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="you@example.com"
+                    required
+                  />
+                  <p class="field-error" id="emailError"></p>
+                </div>
 
-                <!-- Message textarea -->
-                <label for="message">Message</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="5"
-                  placeholder="Write your message..."
-                  required
-                ></textarea>
-                <p class="field-error" id="messageError"></p>
+                <div>
+                  <label for="message">Message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="5"
+                    placeholder="Write your message..."
+                    required
+                  ></textarea>
+                  <p class="field-error" id="messageError"></p>
+                </div>
 
-                <!-- Submit button -->
                 <button class="btn primary" type="submit">Send</button>
-
-                <!-- General success message -->
                 <p class="form-status" id="formStatus" role="status"></p>
               </form>
             </div>
 
-            <!-- Extra info and greeting -->
-            <div class="card">
-              <h4 class="card-title">Info</h4>
-              <p class="muted">Email: Ola.alhodar@gmail.com</p>
-              <p class="muted">GitHub: ola-swe</p>
-              <!-- Greeting text injected by JavaScript -->
-              <p class="muted" id="greetingText"></p>
+            <div class="contact-side">
+              <div class="card">
+                <h4 class="card-title">Info</h4>
+                <p class="muted">Email: ola.alhodar@gmail.com</p>
+                <p class="muted">
+                  GitHub:
+                  <a
+                    class="link"
+                    href="https://github.com/ola-swe"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    ola-swe
+                  </a>
+                </p>
+                <p class="muted" id="greetingText"></p>
+              </div>
+
+              <div class="card">
+                <h4 class="card-title">Visitor Greeting</h4>
+                <label for="visitorName">Enter your name</label>
+                <input
+                  type="text"
+                  id="visitorName"
+                  placeholder="Your name"
+                />
+                <button class="btn" id="saveVisitorName" type="button">
+                  Save Name
+                </button>
+                <p class="muted" id="visitorMessage"></p>
+              </div>
+
+              <div class="card">
+                <h4 class="card-title">Time on Site</h4>
+                <p class="muted">
+                  You have been on this portfolio for:
+                </p>
+                <p class="timer-text" id="visitTimer">0 seconds</p>
+              </div>
             </div>
           </div>
         </div>
@@ -274,7 +342,6 @@
     <!-- ================= FOOTER ================= -->
     <footer class="footer">
       <div class="container footer-inner">
-        <!-- Year is dynamically inserted using JavaScript -->
         <p>© <span id="year"></span> Ola — Portfolio</p>
         <a class="link" href="#main">Back to top</a>
       </div>
