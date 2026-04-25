@@ -20,6 +20,8 @@
   </head>
 
   <body>
+  
+    <!-- ================= SCROLL PROGRESS ================= -->
     <div class="scroll-progress" aria-hidden="true">
       <div class="scroll-progress__bar" id="scrollProgressBar"></div>
     </div>
@@ -68,34 +70,63 @@
       </div>
     </header>
 
+    <div class="mood-box card">
+  <p class="muted">How are you feeling today?</p>
+
+  <div class="mood-options">
+      <button class="btn mood-btn" data-mood="focused">😌 Focused</button>
+      <button class="btn mood-btn" data-mood="curious">🤔 Curious</button>
+      <button class="btn mood-btn" data-mood="relaxed">🌙 Relaxed</button>
+    </div>
+  </div>
+
     <!-- ================= MAIN CONTENT ================= -->
     <main id="main">
-      <!-- ========== HERO SECTION ========== -->
+      <!-- ================= HERO SECTION ================= -->
       <section class="hero" data-reveal>
         <div class="container hero-inner">
           <div class="hero-text">
             <p class="tagline">
-
+              <span class="status-dot"></span>
+              Available for learning, building, and growing
             </p>
 
             <h2 class="hero-title">Hi, I’m Ola 👋</h2>
 
             <p class="hero-desc">
-              I’m a software engineering student focused on web development, 
-              building clean, responsive, and user-friendly applications. 
-              I enjoy turning ideas into simple, usable websites, 
-              while using problem-solving and modern tools to enhance
-               functionality and user experience.
+              I’m a software engineering student focused on web development,
+              building clean, responsive, and user-friendly applications. I enjoy
+              turning ideas into simple, usable websites while using
+              problem-solving and modern tools to enhance functionality and user
+              experience.
             </p>
 
             <div class="hero-actions">
               <a class="btn primary" href="#projects">See projects</a>
               <a class="btn" href="#contact">Contact me</a>
             </div>
+
+            <div class="hero-stats">
+              <div>
+                <strong id="skillsCount">0</strong>
+                <span>Skills</span>
+              </div>
+              <div>
+                <strong id="projectsCount">0</strong>
+                <span>GitHub Projects</span>
+              </div>
+              <div>
+                <strong>∞</strong>
+                <span>Curiosity</span>
+              </div>
+            </div>
           </div>
 
           <div class="hero-card card" role="img" aria-label="Profile information card">
-            <div class="avatar" aria-hidden="true">OA</div>
+            <div class="avatar" aria-hidden="true">
+              <span>OA</span>
+            </div>
+
             <div class="hero-card-text">
               <p><strong>Focus:</strong> HTML, CSS, JavaScript</p>
               <p><strong>Learning:</strong> AI-assisted development</p>
@@ -105,7 +136,7 @@
         </div>
       </section>
 
-      <!-- ========== ABOUT SECTION ========== -->
+      <!-- ================= ABOUT SECTION ================= -->
       <section class="section" id="about" data-reveal>
         <div class="container">
           <h3 class="section-title">About Me</h3>
@@ -114,16 +145,23 @@
             <div class="card">
               <p>
                 I’m a Software Engineering student at King Fahd University of
-                 Petroleum and Minerals, with a strong focus on building modern web 
-                 applications. I enjoy creating digital experiences that solve real problems in a simple and practical way.
-                My work combines front-end development with strong problem-solving
-                 skills, allowing me to design interfaces that are not only visually 
-                 appealing but also functional and intuitive. I’m particularly interested 
-                 in how small design and logic decisions can significantly improve the overall user experience.
-                I also explore ways to enhance applications using modern tools and technologies,
-                 whether through better performance, dynamic features, or data-driven improvements. 
-                 My goal is to continuously grow as a developer while building solutions that are both meaningful and reliable.
+                Petroleum and Minerals, with a strong focus on building modern
+                web applications. I enjoy creating digital experiences that solve
+                real problems in a simple and practical way.
               </p>
+
+              <p>
+                My work combines front-end development with strong
+                problem-solving skills, allowing me to design interfaces that are
+                visually appealing, functional, and intuitive.
+              </p>
+
+              <p>
+                I also explore ways to enhance applications using modern tools
+                and technologies, whether through better performance, dynamic
+                features, or data-driven improvements.
+              </p>
+
               <p class="muted">
                 Tagline: <strong>“Simple design, strong basics.”</strong>
               </p>
@@ -139,7 +177,7 @@
                 <li>Git & GitHub</li>
                 <li>Problem Solving</li>
                 <li>UI/UX</li>
-                <li>API</li>
+                <li>API Integration</li>
                 <li>Data Analysis</li>
                 <li>Web Performance Optimization</li>
               </ul>
@@ -148,17 +186,25 @@
         </div>
       </section>
 
-      <!-- ========== PROJECTS SECTION ========== -->
+      <!-- ================= PROJECTS SECTION ================= -->
       <section class="section" id="projects" data-reveal>
         <div class="container">
           <h3 class="section-title">Projects</h3>
 
           <div class="project-toolbar">
             <div class="project-filters" aria-label="Project filters">
-              <button class="btn filter-btn active" type="button" data-filter="all">All</button>
-              <button class="btn filter-btn" type="button" data-filter="ai">AI</button>
-              <button class="btn filter-btn" type="button" data-filter="web">Web</button>
-              <button class="btn filter-btn" type="button" data-filter="mobile">Mobile</button>
+              <button class="btn filter-btn active" type="button" data-filter="all">
+                All
+              </button>
+              <button class="btn filter-btn" type="button" data-filter="ai">
+                AI
+              </button>
+              <button class="btn filter-btn" type="button" data-filter="web">
+                Web
+              </button>
+              <button class="btn filter-btn" type="button" data-filter="mobile">
+                Mobile
+              </button>
             </div>
 
             <div class="sort-box">
@@ -192,9 +238,9 @@
               <div class="project-content">
                 <h4 class="card-title">AI-Powered Study Assistant</h4>
                 <p class="muted">
-                  An AI-driven web application that converts uploaded study materials
-                  into summaries, flashcards, and quizzes to support smarter and more
-                  efficient learning.
+                  An AI-driven web application that converts uploaded study
+                  materials into summaries, flashcards, and quizzes to support
+                  smarter and more efficient learning.
                 </p>
                 <span class="project-tag">AI</span>
               </div>
@@ -218,9 +264,9 @@
               <div class="project-content">
                 <h4 class="card-title">Personal Book Library</h4>
                 <p class="muted">
-                  A personal web application for creating a digital library where users
-                  can log books, add ratings, record reflections, and organize reading
-                  notes in one place.
+                  A personal web application for creating a digital library where
+                  users can log books, add ratings, record reflections, and
+                  organize reading notes in one place.
                 </p>
                 <span class="project-tag">Web</span>
               </div>
@@ -229,14 +275,15 @@
         </div>
       </section>
 
-      <!-- ========== GITHUB API SECTION ========== -->
+      <!-- ================= GITHUB API SECTION ================= -->
       <section class="section" id="github" data-reveal>
         <div class="container">
           <h3 class="section-title">Live GitHub Projects</h3>
 
           <div class="card github-section">
             <p class="muted">
-              These repositories are fetched dynamically from GitHub using the GitHub API.
+              These repositories are fetched dynamically from GitHub using the
+              GitHub API.
             </p>
 
             <div class="project-toolbar">
@@ -256,7 +303,7 @@
         </div>
       </section>
 
-      <!-- ========== CONTACT SECTION ========== -->
+      <!-- ================= CONTACT SECTION ================= -->
       <section class="section" id="contact" data-reveal>
         <div class="container">
           <h3 class="section-title">Contact</h3>
@@ -326,24 +373,8 @@
               </div>
 
               <div class="card">
-                <h4 class="card-title">Visitor Greeting</h4>
-                <label for="visitorName">Enter your name</label>
-                <input
-                  type="text"
-                  id="visitorName"
-                  placeholder="Your name"
-                />
-                <button class="btn" id="saveVisitorName" type="button">
-                  Save Name
-                </button>
-                <p class="muted" id="visitorMessage"></p>
-              </div>
-
-              <div class="card">
                 <h4 class="card-title">Time on Site</h4>
-                <p class="muted">
-                  You have been on this portfolio for:
-                </p>
+                <p class="muted">You have been on this portfolio for:</p>
                 <p class="timer-text" id="visitTimer">0 seconds</p>
               </div>
             </div>

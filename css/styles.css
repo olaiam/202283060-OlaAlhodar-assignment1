@@ -727,3 +727,262 @@ select:focus {
     align-items: flex-start;
   }
 }
+
+.avatar {
+
+  width: 120px;
+
+  height: 120px;
+
+  border-radius: 34px;
+
+  font-size: 2rem;
+
+  position: relative;
+
+  background: linear-gradient(135deg, #7c3aed, #06b6d4);
+
+  box-shadow: 0 0 45px rgba(124, 58, 237, 0.45);
+
+}
+
+.avatar::after {
+
+  content: "";
+
+  position: absolute;
+
+  inset: -8px;
+
+  border-radius: 40px;
+
+  border: 1px solid rgba(255,255,255,0.2);
+
+  animation: rotateGlow 6s linear infinite;
+
+}
+
+@keyframes rotateGlow {
+
+  to {
+
+    transform: rotate(360deg);
+  }
+}
+
+/* ===== FINAL EXTRA POLISH ===== */
+
+/* Tagline pill */
+.tagline {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  width: fit-content;
+}
+
+.status-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 18px #22c55e;
+  animation: pulseDot 1.5s infinite;
+}
+
+@keyframes pulseDot {
+  50% {
+    transform: scale(1.4);
+    opacity: 0.6;
+  }
+}
+
+/* Skills / Projects / Curiosity cards */
+.hero-stats {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+
+.hero-stats div {
+  min-width: 120px;
+  padding: 14px 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-soft);
+  transition: transform 220ms var(--ease), box-shadow 220ms var(--ease);
+}
+
+.hero-stats div:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 45px rgba(124, 58, 237, 0.28);
+  border-color: rgba(124, 58, 237, 0.45);
+}
+
+.hero-stats strong {
+  display: block;
+  font-size: 1.7rem;
+  color: #67e8f9;
+}
+
+.hero-stats span {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* Purple glow when hovering cards */
+.card:hover,
+.project:hover,
+.repo-card:hover {
+  border-color: rgba(124, 58, 237, 0.45);
+  box-shadow:
+    0 18px 55px rgba(0, 0, 0, 0.45),
+    0 0 35px rgba(124, 58, 237, 0.28);
+}
+
+/* Skill chips hover */
+.chips li:hover {
+  transform: translateY(-4px) scale(1.04);
+  background: linear-gradient(
+    135deg,
+    rgba(124, 58, 237, 0.35),
+    rgba(6, 182, 212, 0.25)
+  );
+  border-color: rgba(124, 58, 237, 0.45);
+  box-shadow: 0 10px 28px rgba(124, 58, 237, 0.2);
+}
+
+/* ===== MOOD THEMES FINAL ===== */
+
+/* Default / Curious mood = current theme + extra interaction */
+body[data-mood="curious"] {
+  --accent: #7c3aed;
+  --accent2: #22c55e;
+  --accent3: #06b6d4;
+}
+
+body[data-mood="curious"] .card:hover,
+body[data-mood="curious"] .project:hover,
+body[data-mood="curious"] .repo-card:hover {
+  transform: translateY(-7px) scale(1.015);
+  border-color: rgba(124, 58, 237, 0.5);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.45),
+    0 0 42px rgba(124, 58, 237, 0.32);
+}
+
+body[data-mood="curious"] .chips li:hover {
+  transform: translateY(-5px) scale(1.06);
+}
+
+/* Focused mood = cleaner, quieter, less animated */
+body[data-mood="focused"] {
+  --accent: #64748b;
+  --accent2: #94a3b8;
+  --accent3: #475569;
+}
+
+body[data-mood="focused"] .card::before {
+  opacity: 0.25;
+}
+
+body[data-mood="focused"] .card,
+body[data-mood="focused"] .hero-stats div,
+body[data-mood="focused"] .chips li {
+  transition-duration: 120ms;
+}
+
+body[data-mood="focused"] .card:hover,
+body[data-mood="focused"] .project:hover,
+body[data-mood="focused"] .repo-card:hover {
+  transform: translateY(-1px);
+  border-color: rgba(148, 163, 184, 0.35);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+}
+
+body[data-mood="focused"] .chips li:hover {
+  transform: none;
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: none;
+}
+
+body[data-mood="focused"] .avatar::after,
+body[data-mood="focused"] .status-dot {
+  animation: none;
+}
+
+/* Relaxed mood = pinkish, soft, smoother */
+body[data-mood="relaxed"] {
+  --accent: #ec4899;
+  --accent2: #f9a8d4;
+  --accent3: #f472b6;
+  --surface: rgba(236, 72, 153, 0.07);
+  --surface-2: rgba(249, 168, 212, 0.12);
+}
+
+body[data-mood="relaxed"] .card::before {
+  background:
+    radial-gradient(500px 200px at 20% 0%, rgba(236, 72, 153, 0.18), transparent 60%),
+    radial-gradient(450px 250px at 80% 20%, rgba(249, 168, 212, 0.16), transparent 60%);
+}
+
+body[data-mood="relaxed"] .avatar,
+body[data-mood="relaxed"] .btn.primary,
+body[data-mood="relaxed"] .filter-btn.active {
+  background: linear-gradient(135deg, #ec4899, #f9a8d4);
+}
+
+body[data-mood="relaxed"] .card,
+body[data-mood="relaxed"] .hero-stats div,
+body[data-mood="relaxed"] .chips li {
+  transition-duration: 420ms;
+}
+
+body[data-mood="relaxed"] .card:hover,
+body[data-mood="relaxed"] .project:hover,
+body[data-mood="relaxed"] .repo-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(236, 72, 153, 0.4);
+  box-shadow:
+    0 16px 45px rgba(236, 72, 153, 0.16),
+    0 0 28px rgba(249, 168, 212, 0.22);
+}
+
+body[data-mood="relaxed"] .chips li:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(
+    135deg,
+    rgba(236, 72, 153, 0.22),
+    rgba(249, 168, 212, 0.18)
+  );
+  box-shadow: 0 8px 22px rgba(236, 72, 153, 0.16);
+}
+
+/* Light mode support for relaxed */
+html[data-theme="light"] body[data-mood="relaxed"] {
+  --bg0: #fff1f7;
+  --bg1: #ffffff;
+  --text: #24111c;
+  --muted: rgba(36, 17, 28, 0.68);
+  --surface: rgba(236, 72, 153, 0.07);
+  --surface-2: rgba(249, 168, 212, 0.12);
+}
+
+/* Light mode support for focused */
+html[data-theme="light"] body[data-mood="focused"] {
+  --bg0: #f8fafc;
+  --bg1: #ffffff;
+  --surface: rgba(15, 23, 42, 0.035);
+  --surface-2: rgba(15, 23, 42, 0.055);
+}
+
+/* Light mode support for curious */
+html[data-theme="light"] body[data-mood="curious"] {
+  --bg0: #f7f8fb;
+  --bg1: #ffffff;
+}

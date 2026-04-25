@@ -1,20 +1,33 @@
 // script.js
-// Portfolio interactions:
-// - footer year
-// - greeting text
-// - theme toggle with persistence
-// - mobile nav toggle
-// - scroll progress bar
-// - reveal on scroll
-// - active nav link highlight
-// - project filtering + sorting + saved state
-// - GitHub API integration + sorting + error handling
-// - contact form validation
-// - visitor name state
-// - visit timer
+// Portfolio interactions
 
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => Array.from(document.querySelectorAll(selector));
+
+/* ========== COUNT UP ANIMATION ========== */
+function animateCount(element, targetNumber) {
+  if (!element) return;
+
+  const duration = 1200;
+  const startTime = performance.now();
+
+  function updateCount(currentTime) {
+    const elapsedTime = currentTime - startTime;
+    const progress = Math.min(elapsedTime / duration, 1);
+
+    const currentNumber = Math.floor(progress * targetNumber);
+
+    element.textContent = currentNumber;
+
+    if (progress < 1) {
+      requestAnimationFrame(updateCount);
+    } else {
+      element.textContent = targetNumber;
+    }
+  }
+
+  requestAnimationFrame(updateCount);
+}
 
 /* ========== FOOTER YEAR ========== */
 const yearEl = $("#year");
@@ -175,7 +188,6 @@ function renderLocalProjects() {
   if (!projectsGrid) return;
 
   let visibleCount = 0;
-
   const sortedCards = sortProjectCards(projectCards, currentSort);
 
   sortedCards.forEach((card) => {
@@ -184,9 +196,7 @@ function renderLocalProjects() {
 
     card.classList.toggle("hidden", !matches);
 
-    if (matches) {
-      visibleCount += 1;
-    }
+    if (matches) visibleCount += 1;
 
     projectsGrid.appendChild(card);
   });
@@ -232,6 +242,11 @@ const sortProjectsSelect = $("#sortProjects");
 
 let githubRepos = [];
 let githubSort = localStorage.getItem("repoSort") || "default";
+
+function updateProjectsCount() {
+  const projectsCountEl = $("#projectsCount");
+  animateCount(projectsCountEl, githubRepos.length);
+}
 
 function sortGitHubRepos(repos, sortType) {
   const sortedRepos = [...repos];
@@ -304,17 +319,22 @@ async function fetchGitHubRepos() {
       .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
       .slice(0, 6);
 
+    updateProjectsCount();
     renderGitHubRepos();
+
     githubStatusEl.textContent = "GitHub projects loaded successfully.";
   } catch (error) {
-  githubProjectsEl.innerHTML = "";
-  githubStatusEl.innerHTML = `
-    GitHub projects are temporarily unavailable.
-    <a href="https://github.com/ola-swe" target="_blank" class="link">
-      View my GitHub profile
-    </a>
-  `;
+    githubRepos = [];
 
+    updateProjectsCount();
+
+    githubProjectsEl.innerHTML = "";
+    githubStatusEl.innerHTML = `
+      GitHub projects are temporarily unavailable.
+      <a href="https://github.com/ola-swe" target="_blank" class="link">
+        View my GitHub profile
+      </a>
+    `;
   }
 }
 
@@ -366,15 +386,19 @@ function validateName() {
 
 function validateEmail() {
   const value = emailInput.value.trim();
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   if (!value) {
     showFieldError(emailInput, emailError, "Please enter your email address.");
     return false;
   }
 
-  if (!emailPattern.test(value)) {
-    showFieldError(emailInput, emailError, "Please enter a valid email address.");
+  if (!value.includes("@")) {
+    showFieldError(emailInput, emailError, "Email must include @.");
+    return false;
+  }
+
+  if (!value.endsWith(".com")) {
+    showFieldError(emailInput, emailError, "Email must end with .com.");
     return false;
   }
 
@@ -387,11 +411,6 @@ function validateMessage() {
 
   if (!value) {
     showFieldError(messageInput, messageError, "Please enter your message.");
-    return false;
-  }
-
-  if (value.length < 10) {
-    showFieldError(messageInput, messageError, "Message must be at least 10 characters.");
     return false;
   }
 
@@ -431,38 +450,6 @@ nameInput?.addEventListener("input", validateName);
 emailInput?.addEventListener("input", validateEmail);
 messageInput?.addEventListener("input", validateMessage);
 
-/* ========== VISITOR NAME STATE ========== */
-const visitorNameInput = $("#visitorName");
-const saveVisitorNameBtn = $("#saveVisitorName");
-const visitorMessage = $("#visitorMessage");
-
-function loadVisitorName() {
-  const savedName = localStorage.getItem("visitorName");
-
-  if (savedName) {
-    if (visitorNameInput) {
-      visitorNameInput.value = savedName;
-    }
-
-    if (visitorMessage) {
-      visitorMessage.textContent = `Welcome back, ${savedName}!`;
-    }
-  }
-}
-
-saveVisitorNameBtn?.addEventListener("click", () => {
-  const visitorName = visitorNameInput?.value.trim() || "";
-
-  if (!visitorMessage) return;
-
-  if (!visitorName) {
-    visitorMessage.textContent = "Please enter your name first.";
-    return;
-  }
-
-  localStorage.setItem("visitorName", visitorName);
-  visitorMessage.textContent = `Nice to meet you, ${visitorName}! Your name was saved.`;
-});
 
 /* ========== VISIT TIMER ========== */
 const visitTimer = $("#visitTimer");
@@ -494,12 +481,36 @@ window.addEventListener("load", () => {
   updateProgressBar();
   setActiveLink();
   renderLocalProjects();
-  loadVisitorName();
   fetchGitHubRepos();
 
   if (sortProjectsSelect) {
     sortProjectsSelect.value = githubSort;
   }
 
+  const skills = document.querySelectorAll(".chips li");
+  const skillsCountEl = document.getElementById("skillsCount");
+  animateCount(skillsCountEl, skills.length);
+
   setInterval(updateVisitTimer, 1000);
 });
+
+/* ========== MOOD-BASED UI ========== */
+const moodButtons = document.querySelectorAll(".mood-btn");
+
+function applyMood(mood) {
+  document.body.setAttribute("data-mood", mood);
+  localStorage.setItem("mood", mood);
+
+  moodButtons.forEach((btn) => {
+    btn.classList.toggle("active", btn.dataset.mood === mood);
+  });
+}
+
+moodButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    applyMood(btn.dataset.mood);
+  });
+});
+
+const savedMood = localStorage.getItem("mood") || "curious";
+applyMood(savedMood);form
